@@ -453,6 +453,10 @@
     <instance objName="obj_health" x="0" y="0" name="inst_B61BB639" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_testEnemy" x="800" y="640" name="inst_57AB5816" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_Lives" x="0" y="32" name="inst_281DC29E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Coin" x="704" y="416" name="inst_182FC952" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Coin" x="736" y="416" name="inst_83D1A467" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_Coin" x="768" y="416" name="inst_D0DBFEC8" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_chest" x="832" y="640" name="inst_8C1861E3" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="bg_test1" x="128" y="608" w="32" h="32" xo="0" yo="0" id="10000001" name="inst_326A38F1" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>

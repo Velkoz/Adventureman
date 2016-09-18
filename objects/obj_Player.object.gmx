@@ -30,10 +30,10 @@ start_x = x;
 start_y = y;
 
 phy_fixed_rotation = true;
-move_speed = 600;
-max_xspeed = 4;
+move_speed = 500;
+max_xspeed = 3;
 jumping = false;
-jump_force = -450;
+jump_force = -400;
 damagable = true;
 lives = 3;
 </string>
@@ -431,9 +431,9 @@ if(place_meeting(x,y+1,obj_Collision)){
   <PhysicsObjectGroup>0</PhysicsObjectGroup>
   <PhysicsObjectLinearDamping>1</PhysicsObjectLinearDamping>
   <PhysicsObjectAngularDamping>0.100000001490116</PhysicsObjectAngularDamping>
-  <PhysicsObjectFriction>1</PhysicsObjectFriction>
+  <PhysicsObjectFriction>0.800000011920929</PhysicsObjectFriction>
   <PhysicsObjectAwake>-1</PhysicsObjectAwake>
-  <PhysicsObjectKinematic>0</PhysicsObjectKinematic>
+  <PhysicsObjectKinematic>-1</PhysicsObjectKinematic>
   <PhysicsShapePoints>
     <point>4,1</point>
     <point>28,1</point>
