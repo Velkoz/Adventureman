@@ -4,7 +4,10 @@
     <Config>Configs\Default</Config>
   </Configs>
   <NewExtensions/>
-  <sounds name="sound"/>
+  <sounds name="sound">
+    <sound>sound\snd_coin</sound>
+    <sound>sound\snd_rangedAttack</sound>
+  </sounds>
   <sprites name="sprites">
     <sprites name="System">
       <sprite>sprites\spr_Collision</sprite>
