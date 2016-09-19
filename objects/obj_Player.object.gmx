@@ -131,21 +131,29 @@ if(place_meeting(x,y+vsp,obj_Collision)){
 y += vsp;
 
 //Check which sprite to display
-if(!key_jump &amp;&amp; key_right == 0 &amp;&amp; key_left == 0){
+if(!place_meeting(x, y+1,obj_Collision) &amp;&amp; vsp &gt; 0){
+    //Falling sprite
+    //Placeholder, replace with fall sprite
+    sprite_index = spr_player_run;
+    image_speed = .2;
+}
+else if(!place_meeting(x, y+1, obj_Collision)){
+    //Jump
+    sprite_index = spr_player_jump;
+    image_speed = .4;
+}
+else if(key_right == 0 &amp;&amp; key_left == 0){
     //Standing sprite
     sprite_index = spr_Player1_Stand;
 }
-else if(!key_jump &amp;&amp;(key_right != 0 || key_left != 0)){
+else if((key_right != 0 || key_left != 0)){
     //Running sprite
     sprite_index = spr_player_run;
     image_speed = .2;
 }
-else if(!key_jump &amp;&amp; !place_meeting(x, y+sign(vsp),obj_Collision)){
-    //Falling sprite
-    show_debug_message("falling!!");
-}
-else if(key_jump){
-    //Jump
+else{
+    // If all else fails, use standing sprite
+    sprite_index = spr_Player1_Stand;
 }
 </string>
           </argument>
@@ -321,7 +329,7 @@ if(image_speed &gt; 0){
         <arguments>
           <argument>
             <kind>0</kind>
-            <string>60</string>
+            <string>40</string>
           </argument>
           <argument>
             <kind>4</kind>
