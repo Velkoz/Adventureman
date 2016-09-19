@@ -26,14 +26,22 @@
           <argument>
             <kind>1</kind>
             <string>///Set starting values
+
+grav = 0.2;
+hsp = 0;
+vsp = 0;
+jumpspeed = 6;
+movespeed = 3;
 start_x = x;
 start_y = y;
 
-phy_fixed_rotation = true;
+/*
 move_speed = 500;
 max_xspeed = 3;
 jumping = false;
 jump_force = -400;
+*/
+
 damagable = true;
 lives = 3;
 </string>
@@ -81,24 +89,79 @@ lives = 3;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Speed Cap
-phy_speed_x = max(min(phy_speed_x, max_xspeed), -max_xspeed);
+            <string>///Movement
 
-if(phy_speed_x &gt; 0.1 || phy_speed_x &lt; -0.1){
-    //Set to running
-    sprite_index = spr_player_run
-}else{
-    sprite_index = spr_Player1_Stand;
+key_right = keyboard_check(vk_right);
+key_left = -keyboard_check(vk_left);
+key_jump = keyboard_check_pressed(vk_space);
+
+// React to input
+move = key_left + key_right;
+hsp = move * movespeed;
+if(vsp &lt; 10){ vsp += grav;}
+
+if(place_meeting(x,y+1,obj_Collision)){
+    vsp = key_jump * -jumpspeed;
 }
 
-// Slow it down
-image_speed = phy_speed_x / 20;
+// Horizontal Collision
+if(place_meeting(x+hsp,y,obj_Collision)){
+    while(!place_meeting(x+sign(hsp),y,obj_Collision)){
+        x += sign(hsp);
+    }
+    hsp = 0;
+}
+x += hsp;
 
-//Background
-background_x[0] = -phy_position_x/5;
+// Vertical Collision
+if(place_meeting(x,y+vsp,obj_Collision)){
+    while(!place_meeting(x,y+sign(vsp),obj_Collision)){
+        y += sign(vsp);
+    }
+    vsp = 0;
+}
+y += vsp;
 </string>
           </argument>
         </arguments>
+      </action>
+    </event>
+    <event eventtype="4" ename="obj_Coin">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Update Score
+score += 100
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>203</id>
+        <kind>0</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>1</exetype>
+        <functionname>action_kill_object</functionname>
+        <codestring></codestring>
+        <whoName>other</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
       </action>
     </event>
     <event eventtype="4" ename="obj_testEnemy">
@@ -129,8 +192,8 @@ if(obj_health.hp &lt;= 0 &amp;&amp; damagable){
     // Death animation
     
     //Place at start
-    phy_position_x = start_x;
-    phy_position_y = start_y;
+    x = start_x;
+    y = start_y;
     obj_health.hp = 6;
     
     if(lives &lt;= 0){
@@ -165,56 +228,7 @@ alarm[0] = 30;
           <argument>
             <kind>1</kind>
             <string>///Make it happen!
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="5" enumb="39">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>image_xscale = 1;
 
-physics_apply_force(x,y, move_speed, -20);
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="5" enumb="37">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>image_xscale = -1;
-
-physics_apply_force(x,y, -move_speed, -20);
 </string>
           </argument>
         </arguments>
@@ -357,26 +371,25 @@ physics_apply_force(x,y, -move_speed, -20);
       </action>
       <action>
         <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
+        <id>109</id>
+        <kind>0</kind>
+        <userelative>-1</userelative>
         <isquestion>0</isquestion>
         <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
+        <exetype>1</exetype>
+        <functionname>action_move_to</functionname>
         <codestring></codestring>
         <whoName>self</whoName>
         <relative>0</relative>
         <isnot>0</isnot>
         <arguments>
           <argument>
-            <kind>1</kind>
-            <string>//Take a life
-
-// Reset position
-phy_position_x = start_x;
-phy_position_y = start_y;
-</string>
+            <kind>0</kind>
+            <string>start_x</string>
+          </argument>
+          <argument>
+            <kind>0</kind>
+            <string>start_y</string>
           </argument>
         </arguments>
       </action>
@@ -395,35 +408,8 @@ phy_position_y = start_y;
         <isnot>0</isnot>
       </action>
     </event>
-    <event eventtype="9" enumb="32">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>///Jump
-if(place_meeting(x,y+1,obj_Collision)){
-    jumping = true;
-    physics_apply_impulse(x,y,0,jump_force);
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
   </events>
-  <PhysicsObject>-1</PhysicsObject>
+  <PhysicsObject>0</PhysicsObject>
   <PhysicsObjectSensor>0</PhysicsObjectSensor>
   <PhysicsObjectShape>1</PhysicsObjectShape>
   <PhysicsObjectDensity>1</PhysicsObjectDensity>
@@ -434,10 +420,5 @@ if(place_meeting(x,y+1,obj_Collision)){
   <PhysicsObjectFriction>0.800000011920929</PhysicsObjectFriction>
   <PhysicsObjectAwake>-1</PhysicsObjectAwake>
   <PhysicsObjectKinematic>-1</PhysicsObjectKinematic>
-  <PhysicsShapePoints>
-    <point>4,1</point>
-    <point>28,1</point>
-    <point>28,63</point>
-    <point>4,63</point>
-  </PhysicsShapePoints>
+  <PhysicsShapePoints/>
 </object>

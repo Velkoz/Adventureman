@@ -30,9 +30,9 @@ hp = 4;
 
 //Direction
 dir = -1;
-movespeed = 200;
 hsp = 0;
 vsp = 0;
+//movespeed = 200;
 </string>
           </argument>
         </arguments>
@@ -56,8 +56,6 @@ vsp = 0;
           <argument>
             <kind>1</kind>
             <string>image_xscale = dir;
-
-physics_apply_force(x,y, -movespeed, -20);
 </string>
           </argument>
         </arguments>
@@ -105,12 +103,6 @@ physics_apply_force(x,y, -movespeed, -20);
             <kind>1</kind>
             <string>///Change direction
 
-/*
-if(place_meeting(x,y,obj_Collision)){
-    dir = -dir;
-}
-*/
-
 dir = -dir;
 </string>
           </argument>
@@ -118,7 +110,7 @@ dir = -dir;
       </action>
     </event>
   </events>
-  <PhysicsObject>-1</PhysicsObject>
+  <PhysicsObject>0</PhysicsObject>
   <PhysicsObjectSensor>0</PhysicsObjectSensor>
   <PhysicsObjectShape>1</PhysicsObjectShape>
   <PhysicsObjectDensity>1</PhysicsObjectDensity>
@@ -129,10 +121,5 @@ dir = -dir;
   <PhysicsObjectFriction>0.200000002980232</PhysicsObjectFriction>
   <PhysicsObjectAwake>-1</PhysicsObjectAwake>
   <PhysicsObjectKinematic>-1</PhysicsObjectKinematic>
-  <PhysicsShapePoints>
-    <point>0,0</point>
-    <point>32,0</point>
-    <point>32,64</point>
-    <point>0,64</point>
-  </PhysicsShapePoints>
+  <PhysicsShapePoints/>
 </object>
