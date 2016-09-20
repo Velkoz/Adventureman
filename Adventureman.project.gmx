@@ -25,6 +25,7 @@
       <sprite>sprites\spr_chestOpen</sprite>
       <sprite>sprites\spr_coin</sprite>
       <sprite>sprites\spr_chest</sprite>
+      <sprite>sprites\spr_forestTreasure</sprite>
     </sprites>
   </sprites>
   <backgrounds name="background">
@@ -40,6 +41,7 @@
       <object>objects\obj_Collision</object>
       <object>objects\obj_Lives</object>
       <object>objects\obj_health</object>
+      <object>objects\obj_score</object>
     </objects>
     <objects name="Player">
       <object>objects\obj_Player</object>
@@ -50,6 +52,7 @@
     <objects name="Level Items">
       <object>objects\obj_Coin</object>
       <object>objects\obj_chest</object>
+      <object>objects\obj_forestTreasure</object>
     </objects>
   </objects>
   <rooms name="rooms">
