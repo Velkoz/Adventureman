@@ -134,7 +134,7 @@ y += vsp;
 if(!place_meeting(x, y+1,obj_Collision) &amp;&amp; vsp &gt; 0){
     //Falling sprite
     //Placeholder, replace with fall sprite
-    sprite_index = spr_player_run;
+    sprite_index = spr_player_fall;
     image_speed = .2;
 }
 else if(!place_meeting(x, y+1, obj_Collision)){

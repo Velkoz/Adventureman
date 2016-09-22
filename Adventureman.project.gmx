@@ -20,6 +20,7 @@
       <sprite>sprites\spr_Player1_Stand</sprite>
       <sprite>sprites\spr_player_run</sprite>
       <sprite>sprites\spr_player_jump</sprite>
+      <sprite>sprites\spr_player_fall</sprite>
     </sprites>
     <sprites name="Level Items">
       <sprite>sprites\spr_chestOpen</sprite>
