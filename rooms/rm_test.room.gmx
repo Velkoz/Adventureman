@@ -460,6 +460,7 @@
     <instance objName="obj_chest" x="768" y="640" name="inst_FCABBEF2" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_forestTreasure" x="2912" y="448" name="inst_B752323D" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_score" x="32" y="0" name="inst_81452590" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_enemyR1" x="480" y="640" name="inst_DA3154ED" locked="0" code="" scaleX="-1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="bg_test1" x="128" y="608" w="32" h="32" xo="0" yo="0" id="10000001" name="inst_326A38F1" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>

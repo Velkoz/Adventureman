@@ -27,6 +27,10 @@
       <sprite>sprites\spr_chest</sprite>
       <sprite>sprites\spr_forestTreasure</sprite>
     </sprites>
+    <sprites name="enemies">
+      <sprite>sprites\spr_enemytemp</sprite>
+    </sprites>
+    <sprite>sprites\spr_dart</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\bg_Forest1</background>
@@ -47,6 +51,7 @@
       <object>objects\obj_Player</object>
     </objects>
     <objects name="Enemies">
+      <object>objects\obj_enemyR1</object>
       <object>objects\obj_testEnemy</object>
     </objects>
     <objects name="Level Items">
@@ -54,6 +59,7 @@
       <object>objects\obj_chest</object>
       <object>objects\obj_forestTreasure</object>
     </objects>
+    <object>objects\obj_dart</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\rm_test</room>
