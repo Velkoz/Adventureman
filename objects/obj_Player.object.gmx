@@ -43,7 +43,56 @@ jump_force = -400;
 */
 
 damagable = true;
+attacking = false;
+atk_anim = false;
 lives = 3;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="2">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>atk_anim = false;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="1">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Can attack again
+attacking = false;
 </string>
           </argument>
         </arguments>
@@ -130,30 +179,35 @@ if(place_meeting(x,y+vsp,obj_Collision)){
 }
 y += vsp;
 
-//Check which sprite to display
-if(!place_meeting(x, y+1,obj_Collision) &amp;&amp; vsp &gt; 0){
-    //Falling sprite
-    //Placeholder, replace with fall sprite
-    sprite_index = spr_player_fall;
-    image_speed = .2;
-}
-else if(!place_meeting(x, y+1, obj_Collision)){
-    //Jump
-    sprite_index = spr_player_jump;
-    image_speed = .4;
-}
-else if(key_right == 0 &amp;&amp; key_left == 0){
-    //Standing sprite
-    sprite_index = spr_Player1_Stand;
-}
-else if((key_right != 0 || key_left != 0)){
-    //Running sprite
-    sprite_index = spr_player_run;
-    image_speed = .2;
+if(!atk_anim){
+    //Check which sprite to display
+    if(!place_meeting(x, y+1,obj_Collision) &amp;&amp; vsp &gt; 0){
+        //Falling sprite
+        //Placeholder, replace with fall sprite
+        sprite_index = spr_player_fall;
+        image_speed = .2;
+    }
+    else if(!place_meeting(x, y+1, obj_Collision)){
+        //Jump
+        sprite_index = spr_player_jump;
+        image_speed = .4;
+    }
+    else if(key_right == 0 &amp;&amp; key_left == 0){
+        //Standing sprite
+        sprite_index = spr_Player1_Stand;
+    }
+    else if((key_right != 0 || key_left != 0)){
+        //Running sprite
+        sprite_index = spr_player_run;
+        image_speed = .2;
+    }
+    else{
+        // If all else fails, use standing sprite
+        sprite_index = spr_Player1_Stand;
+    }
 }
 else{
-    // If all else fails, use standing sprite
-    sprite_index = spr_Player1_Stand;
+    sprite_index = spr_player_melee;
 }
 </string>
           </argument>
@@ -799,6 +853,42 @@ alarm[0] = 30;
         <whoName>self</whoName>
         <relative>0</relative>
         <isnot>0</isnot>
+      </action>
+    </event>
+    <event eventtype="9" enumb="90">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Melee Attack
+if(!attacking){
+    sprite_index = spr_melee;
+    attacking = true;
+    atk_anim = true;
+    
+    with instance_create(x+(10*obj_Player.image_xscale),y+3,obj_melee){
+        image_xscale = obj_Player.image_xscale;
+        image_speed = 0.2;
+    }
+    
+    alarm[1] = 30;
+    alarm[2] = 20;
+}
+</string>
+          </argument>
+        </arguments>
       </action>
     </event>
   </events>
