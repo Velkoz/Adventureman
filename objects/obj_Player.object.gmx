@@ -314,6 +314,9 @@ if(obj_health.hp &lt;= 0 &amp;&amp; damagable){
         game_restart();
     }
 }
+else{
+    sprite_index = spr_player_hurt;
+}
 
 damagable = false;
 alarm[0] = 30;
@@ -806,6 +809,9 @@ if(obj_health.hp &lt;= 0 &amp;&amp; damagable){
         game_restart();
     }
 }
+else{
+    sprite_index = spr_player_hurt;
+}
 
 damagable = false;
 alarm[0] = 30;
@@ -855,6 +861,9 @@ if(obj_health.hp &lt;= 0 &amp;&amp; damagable){
         show_message("Game over!");
         game_restart();
     }
+}
+else{
+    sprite_index = spr_player_hurt;
 }
 
 damagable = false;

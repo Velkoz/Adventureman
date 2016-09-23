@@ -28,6 +28,7 @@
       <sprite>sprites\spr_melee</sprite>
       <sprite>sprites\spr_player_melee</sprite>
       <sprite>sprites\spr_player_death</sprite>
+      <sprite>sprites\spr_player_hurt</sprite>
     </sprites>
     <sprites name="Level Items">
       <sprite>sprites\spr_chestOpen</sprite>
