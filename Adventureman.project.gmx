@@ -7,6 +7,10 @@
   <sounds name="sound">
     <sound>sound\snd_coin</sound>
     <sound>sound\snd_rangedAttack</sound>
+    <sound>sound\snd_heal</sound>
+    <sound>sound\snd_hit</sound>
+    <sound>sound\snd_meleeHit</sound>
+    <sound>sound\snd_rangedHit</sound>
   </sounds>
   <sprites name="sprites">
     <sprites name="System">
@@ -32,6 +36,8 @@
     </sprites>
     <sprites name="enemies">
       <sprite>sprites\spr_enemytemp</sprite>
+      <sprite>sprites\spr_snake</sprite>
+      <sprite>sprites\spr_snake_move</sprite>
     </sprites>
     <sprite>sprites\spr_dart</sprite>
   </sprites>
@@ -57,11 +63,13 @@
     <objects name="Enemies">
       <object>objects\obj_enemyR1</object>
       <object>objects\obj_testEnemy</object>
+      <object>objects\obj_snakeEnemy</object>
     </objects>
     <objects name="Level Items">
       <object>objects\obj_Coin</object>
       <object>objects\obj_chest</object>
       <object>objects\obj_forestTreasure</object>
+      <object>objects\obj_heart</object>
     </objects>
     <object>objects\obj_dart</object>
   </objects>

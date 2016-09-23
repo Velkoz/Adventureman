@@ -45,6 +45,7 @@ jump_force = -400;
 damagable = true;
 attacking = false;
 atk_anim = false;
+hurt_anim = false;
 lives = 3;
 </string>
           </argument>
@@ -68,7 +69,8 @@ lives = 3;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>atk_anim = false;
+            <string>/// Resume normal step animations
+atk_anim = false;
 </string>
           </argument>
         </arguments>
@@ -179,7 +181,7 @@ if(place_meeting(x,y+vsp,obj_Collision)){
 }
 y += vsp;
 
-if(!atk_anim){
+if(!atk_anim &amp;&amp; !hurt_anim){
     //Check which sprite to display
     if(!place_meeting(x, y+1,obj_Collision) &amp;&amp; vsp &gt; 0){
         //Falling sprite
@@ -206,8 +208,11 @@ if(!atk_anim){
         sprite_index = spr_Player1_Stand;
     }
 }
-else{
+else if(atk_anim){
     sprite_index = spr_player_melee;
+}
+else if(hurt_anim){
+    //sprite_index = spr_player_hurt;
 }
 </string>
           </argument>
@@ -255,6 +260,73 @@ if(obj_health.hp &lt;= 0 &amp;&amp; damagable){
 
 damagable = false;
 alarm[0] = 30;
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>203</id>
+        <kind>0</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>1</exetype>
+        <functionname>action_kill_object</functionname>
+        <codestring></codestring>
+        <whoName>other</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+      </action>
+    </event>
+    <event eventtype="4" ename="obj_heart">
+      <action>
+        <libid>1</libid>
+        <id>211</id>
+        <kind>0</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>0</useapplyto>
+        <exetype>1</exetype>
+        <functionname>action_sound</functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>6</kind>
+            <sound>snd_heal</sound>
+          </argument>
+          <argument>
+            <kind>3</kind>
+            <string>0</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Increase health
+if(obj_health.hp == 6){
+    // Don't do anything
+}
+else{
+    obj_health.hp += 1;
+}
 </string>
           </argument>
         </arguments>
@@ -635,6 +707,53 @@ score += 100
         <isnot>0</isnot>
       </action>
     </event>
+    <event eventtype="4" ename="obj_snakeEnemy">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Reduce health
+if(damagable){
+    obj_health.hp -= 1;
+    audio_play_sound(snd_hit, 10, false);
+}
+
+if(obj_health.hp &lt;= 0 &amp;&amp; damagable){
+    lives -=1;
+    
+    // Death animation
+    
+    //Place at start
+    x = start_x;
+    y = start_y;
+    obj_health.hp = 6;
+    
+    if(lives &lt;= 0){
+        //Game over!
+        show_message("Game over!");
+        game_restart();
+    }
+}
+
+damagable = false;
+alarm[0] = 30;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="4" ename="obj_testEnemy">
       <action>
         <libid>1</libid>
@@ -655,6 +774,7 @@ score += 100
             <string>///Reduce health
 if(damagable){
     obj_health.hp -= 1;
+    audio_play_sound(snd_hit, 10, false);
 }
 
 if(obj_health.hp &lt;= 0 &amp;&amp; damagable){
@@ -874,7 +994,8 @@ alarm[0] = 30;
             <kind>1</kind>
             <string>///Melee Attack
 if(!attacking){
-    sprite_index = spr_melee;
+    sprite_index = spr_player_melee;
+    audio_play_sound(snd_meleeHit, 10, false);
     attacking = true;
     atk_anim = true;
     
