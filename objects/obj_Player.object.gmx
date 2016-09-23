@@ -46,8 +46,59 @@ damagable = true;
 attacking = false;
 atk_anim = false;
 hurt_anim = false;
+dead = false;
 lives = 3;
 </string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="3">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Died, starting again
+sprite_index = spr_Player1_Stand;
+obj_health.hp = 6;
+dead = false;
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>109</id>
+        <kind>0</kind>
+        <userelative>-1</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>1</exetype>
+        <functionname>action_move_to</functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>0</kind>
+            <string>start_x</string>
+          </argument>
+          <argument>
+            <kind>0</kind>
+            <string>start_y</string>
           </argument>
         </arguments>
       </action>
@@ -143,76 +194,78 @@ damagable = true;
             <kind>1</kind>
             <string>///Movement
 
-key_right = keyboard_check(vk_right);
-key_left = -keyboard_check(vk_left);
-key_jump = keyboard_check_pressed(vk_space);
-
-// React to input
-move = key_left + key_right;
-hsp = move * movespeed;
-if(vsp &lt; 10){ vsp += grav;}
-
-if(key_right != 0){
-   image_xscale = 1;
-}
-else if(key_left != 0){
-    image_xscale = -1;
-}
-
-if(place_meeting(x,y+1,obj_Collision)){
-    vsp = key_jump * -jumpspeed;
-}
-
-// Horizontal Collision
-if(place_meeting(x+hsp,y,obj_Collision)){
-    while(!place_meeting(x+sign(hsp),y,obj_Collision)){
-        x += sign(hsp);
+if(!dead){
+    key_right = keyboard_check(vk_right);
+    key_left = -keyboard_check(vk_left);
+    key_jump = keyboard_check_pressed(vk_space);
+    
+    // React to input
+    move = key_left + key_right;
+    hsp = move * movespeed;
+    if(vsp &lt; 10){ vsp += grav;}
+    
+    if(key_right != 0){
+       image_xscale = 1;
     }
-    hsp = 0;
-}
-x += hsp;
-
-// Vertical Collision
-if(place_meeting(x,y+vsp,obj_Collision)){
-    while(!place_meeting(x,y+sign(vsp),obj_Collision)){
-        y += sign(vsp);
+    else if(key_left != 0){
+        image_xscale = -1;
     }
-    vsp = 0;
-}
-y += vsp;
-
-if(!atk_anim &amp;&amp; !hurt_anim){
-    //Check which sprite to display
-    if(!place_meeting(x, y+1,obj_Collision) &amp;&amp; vsp &gt; 0){
-        //Falling sprite
-        //Placeholder, replace with fall sprite
-        sprite_index = spr_player_fall;
-        image_speed = .2;
+    
+    if(place_meeting(x,y+1,obj_Collision)){
+        vsp = key_jump * -jumpspeed;
     }
-    else if(!place_meeting(x, y+1, obj_Collision)){
-        //Jump
-        sprite_index = spr_player_jump;
-        image_speed = .4;
+    
+    // Horizontal Collision
+    if(place_meeting(x+hsp,y,obj_Collision)){
+        while(!place_meeting(x+sign(hsp),y,obj_Collision)){
+            x += sign(hsp);
+        }
+        hsp = 0;
     }
-    else if(key_right == 0 &amp;&amp; key_left == 0){
-        //Standing sprite
-        sprite_index = spr_Player1_Stand;
+    x += hsp;
+    
+    // Vertical Collision
+    if(place_meeting(x,y+vsp,obj_Collision)){
+        while(!place_meeting(x,y+sign(vsp),obj_Collision)){
+            y += sign(vsp);
+        }
+        vsp = 0;
     }
-    else if((key_right != 0 || key_left != 0)){
-        //Running sprite
-        sprite_index = spr_player_run;
-        image_speed = .2;
+    y += vsp;
+    
+    if(!atk_anim &amp;&amp; !hurt_anim){
+        //Check which sprite to display
+        if(!place_meeting(x, y+1,obj_Collision) &amp;&amp; vsp &gt; 0){
+            //Falling sprite
+            //Placeholder, replace with fall sprite
+            sprite_index = spr_player_fall;
+            image_speed = .2;
+        }
+        else if(!place_meeting(x, y+1, obj_Collision)){
+            //Jump
+            sprite_index = spr_player_jump;
+            image_speed = .4;
+        }
+        else if(key_right == 0 &amp;&amp; key_left == 0){
+            //Standing sprite
+            sprite_index = spr_Player1_Stand;
+        }
+        else if((key_right != 0 || key_left != 0)){
+            //Running sprite
+            sprite_index = spr_player_run;
+            image_speed = .2;
+        }
+        else{
+            // If all else fails, use standing sprite
+            sprite_index = spr_Player1_Stand;
+        }
     }
-    else{
-        // If all else fails, use standing sprite
-        sprite_index = spr_Player1_Stand;
+    else if(atk_anim){
+        sprite_index = spr_player_melee;
     }
-}
-else if(atk_anim){
-    sprite_index = spr_player_melee;
-}
-else if(hurt_anim){
-    //sprite_index = spr_player_hurt;
+    else if(hurt_anim){
+        //sprite_index = spr_player_hurt;
+    }
 }
 </string>
           </argument>
@@ -239,17 +292,21 @@ else if(hurt_anim){
             <string>///Reduce health
 if(damagable){
     obj_health.hp -= 1;
+    audio_play_sound(snd_hit, 10, false);
 }
 
 if(obj_health.hp &lt;= 0 &amp;&amp; damagable){
     lives -=1;
     
     // Death animation
+    sprite_index = spr_player_death
+    image_speed = 0.17
+    alarm[3] = 30;
+    dead = true;
     
     //Place at start
-    x = start_x;
-    y = start_y;
-    obj_health.hp = 6;
+    //x = start_x;
+    //y = start_y;
     
     if(lives &lt;= 0){
         //Game over!
@@ -734,11 +791,14 @@ if(obj_health.hp &lt;= 0 &amp;&amp; damagable){
     lives -=1;
     
     // Death animation
+    sprite_index = spr_player_death
+    image_speed = 0.17
+    alarm[3] = 60;
+    dead = true;
     
     //Place at start
-    x = start_x;
-    y = start_y;
-    obj_health.hp = 6;
+    //x = start_x;
+    //y = start_y;
     
     if(lives &lt;= 0){
         //Game over!
@@ -754,7 +814,7 @@ alarm[0] = 30;
         </arguments>
       </action>
     </event>
-    <event eventtype="4" ename="obj_testEnemy">
+    <event eventtype="4" ename="obj_enemyR1">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -781,11 +841,14 @@ if(obj_health.hp &lt;= 0 &amp;&amp; damagable){
     lives -=1;
     
     // Death animation
+    sprite_index = spr_player_death
+    image_speed = 0.17
+    alarm[3] = 30;
+    dead = true;
     
     //Place at start
-    x = start_x;
-    y = start_y;
-    obj_health.hp = 6;
+    //x = start_x;
+    //y = start_y;
     
     if(lives &lt;= 0){
         //Game over!
@@ -819,6 +882,28 @@ alarm[0] = 30;
           <argument>
             <kind>0</kind>
             <string>-1</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>alarm[3] = 30;
+dead = true;
+</string>
           </argument>
         </arguments>
       </action>
@@ -893,72 +978,6 @@ alarm[0] = 30;
         <whoName>self</whoName>
         <relative>0</relative>
         <isnot>0</isnot>
-      </action>
-      <action>
-        <libid>1</libid>
-        <id>424</id>
-        <kind>2</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>0</useapplyto>
-        <exetype>0</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-      </action>
-      <action>
-        <libid>1</libid>
-        <id>421</id>
-        <kind>3</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>0</useapplyto>
-        <exetype>0</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-      </action>
-      <action>
-        <libid>1</libid>
-        <id>422</id>
-        <kind>1</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>0</useapplyto>
-        <exetype>0</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-      </action>
-      <action>
-        <libid>1</libid>
-        <id>109</id>
-        <kind>0</kind>
-        <userelative>-1</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>1</exetype>
-        <functionname>action_move_to</functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>0</kind>
-            <string>start_x</string>
-          </argument>
-          <argument>
-            <kind>0</kind>
-            <string>start_y</string>
-          </argument>
-        </arguments>
       </action>
       <action>
         <libid>1</libid>
