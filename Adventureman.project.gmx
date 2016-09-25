@@ -19,6 +19,7 @@
       <sprite>sprites\spr_halfHeart</sprite>
       <sprite>sprites\spr_emptyHeart</sprite>
       <sprite>sprites\spr_lives</sprite>
+      <sprite>sprites\spr_enemyBounds</sprite>
     </sprites>
     <sprites name="Player">
       <sprite>sprites\spr_Player1_Stand</sprite>
@@ -63,6 +64,7 @@
       <object>objects\obj_Lives</object>
       <object>objects\obj_health</object>
       <object>objects\obj_score</object>
+      <object>objects\obj_enemyBounds</object>
     </objects>
     <objects name="Player">
       <object>objects\obj_Player</object>
