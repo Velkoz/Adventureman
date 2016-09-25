@@ -30,7 +30,7 @@
 grav = 0.2;
 hsp = 0;
 vsp = 0;
-jumpspeed = 6;
+jumpspeed = 6.5;
 movespeed = 3;
 start_x = x;
 start_y = y;
@@ -44,10 +44,36 @@ jump_force = -400;
 
 damagable = true;
 attacking = false;
+shooting = false;
 atk_anim = false;
+ranged_anim = false;
 hurt_anim = false;
 dead = false;
 lives = 3;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="4">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Can shoot again
+shooting = false;
 </string>
           </argument>
         </arguments>
@@ -122,6 +148,7 @@ dead = false;
             <kind>1</kind>
             <string>/// Resume normal step animations
 atk_anim = false;
+ranged_anim = false;
 </string>
           </argument>
         </arguments>
@@ -144,7 +171,7 @@ atk_anim = false;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///Can attack again
+            <string>///Can melee attack again
 attacking = false;
 </string>
           </argument>
@@ -233,7 +260,7 @@ if(!dead){
     }
     y += vsp;
     
-    if(!atk_anim &amp;&amp; !hurt_anim){
+    if(!atk_anim &amp;&amp; !hurt_anim &amp;&amp; !ranged_anim){
         //Check which sprite to display
         if(!place_meeting(x, y+1,obj_Collision) &amp;&amp; vsp &gt; 0){
             //Falling sprite
@@ -263,8 +290,11 @@ if(!dead){
     else if(atk_anim){
         sprite_index = spr_player_melee;
     }
+    else if(ranged_anim){
+        sprite_index = spr_player_ranged;
+    }
     else if(hurt_anim){
-        //sprite_index = spr_player_hurt;
+        sprite_index = spr_player_hurt;
     }
 }
 </string>
@@ -1034,6 +1064,42 @@ if(!attacking){
     
     alarm[1] = 30;
     alarm[2] = 20;
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="9" enumb="88">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Shoot!
+if(!shooting){
+    sprite_index = spr_player_ranged;
+    audio_play_sound(snd_rangedHit, 10, false);
+    shooting = true;
+    ranged_anim = true;
+    
+    with instance_create(x+(10*obj_Player.image_xscale),y+3,obj_bullet){
+        image_xscale = obj_Player.image_xscale;
+        hsp = image_xscale * 10; // Set speed
+    }
+    alarm[2] = 20;
+    alarm[4] = 30;
 }
 </string>
           </argument>

@@ -29,6 +29,7 @@
       <sprite>sprites\spr_player_melee</sprite>
       <sprite>sprites\spr_player_death</sprite>
       <sprite>sprites\spr_player_hurt</sprite>
+      <sprite>sprites\spr_player_ranged</sprite>
     </sprites>
     <sprites name="Level Items">
       <sprite>sprites\spr_chestOpen</sprite>
@@ -40,8 +41,13 @@
       <sprite>sprites\spr_enemytemp</sprite>
       <sprite>sprites\spr_snake</sprite>
       <sprite>sprites\spr_snake_move</sprite>
+      <sprite>sprites\spr_bat</sprite>
+      <sprite>sprites\spr_bat_move</sprite>
     </sprites>
-    <sprite>sprites\spr_dart</sprite>
+    <sprites name="Projectiles">
+      <sprite>sprites\spr_bullet</sprite>
+      <sprite>sprites\spr_dart</sprite>
+    </sprites>
   </sprites>
   <backgrounds name="background">
     <background>background\bg_Forest1</background>
@@ -66,6 +72,7 @@
       <object>objects\obj_enemyR1</object>
       <object>objects\obj_testEnemy</object>
       <object>objects\obj_snakeEnemy</object>
+      <object>objects\obj_batEnemy</object>
     </objects>
     <objects name="Level Items">
       <object>objects\obj_Coin</object>
@@ -73,7 +80,10 @@
       <object>objects\obj_forestTreasure</object>
       <object>objects\obj_heart</object>
     </objects>
-    <object>objects\obj_dart</object>
+    <objects name="Projectiles">
+      <object>objects\obj_dart</object>
+      <object>objects\obj_bullet</object>
+    </objects>
   </objects>
   <rooms name="rooms">
     <room>rooms\rm_test</room>
