@@ -92,36 +92,15 @@ if(place_meeting(x+hsp,y,obj_Collision)){
 }
 x += hsp;
 
-if(hsp != 0){
-    sprite_index = spr_bat_move;
-    image_speed = 0.07;
+if(damagable){
+    if(hsp != 0){
+        sprite_index = spr_bat_move;
+        image_speed = 0.07;
+    }
+    else{
+        sprite_index = spr_bat;
+    }
 }
-else{
-    sprite_index = spr_bat;
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="4" ename="obj_enemyBounds">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>dir = -dir;
 </string>
           </argument>
         </arguments>
@@ -149,12 +128,15 @@ else{
     
     if(hp &lt;= 0){
         //Death anim
+        sprite_index = spr_batDead;
         //Destroy
         instance_destroy();
         
         score += 100;
     }
     damagable = false;
+    sprite_index = spr_batHurt;
+    image_speed = 0.2;
     alarm[0] = 30;
 }
 </string>
@@ -198,14 +180,40 @@ else{
     
     if(hp &lt;= 0){
         //Death anim
+        sprite_index = spr_batDead;
         //Destroy
         instance_destroy();
         
         score += 100;
     }
     damagable = false;
+    sprite_index = spr_batHurt;
+    image_speed = 0.2;
     alarm[0] = 30;
 }
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="4" ename="obj_enemyBounds">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>dir = -dir;
 </string>
           </argument>
         </arguments>

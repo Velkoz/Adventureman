@@ -37,6 +37,8 @@
       <sprite>sprites\spr_coin</sprite>
       <sprite>sprites\spr_chest</sprite>
       <sprite>sprites\spr_forestTreasure</sprite>
+      <sprite>sprites\spr_caveTreasure</sprite>
+      <sprite>sprites\spr_ruinsTreasure</sprite>
     </sprites>
     <sprites name="enemies">
       <sprite>sprites\spr_enemytemp</sprite>
@@ -44,6 +46,10 @@
       <sprite>sprites\spr_snake_move</sprite>
       <sprite>sprites\spr_bat</sprite>
       <sprite>sprites\spr_bat_move</sprite>
+      <sprite>sprites\spr_snakeHurt</sprite>
+      <sprite>sprites\spr_snakeDead</sprite>
+      <sprite>sprites\spr_batHurt</sprite>
+      <sprite>sprites\spr_batDead</sprite>
     </sprites>
     <sprites name="Projectiles">
       <sprite>sprites\spr_bullet</sprite>
@@ -80,6 +86,8 @@
       <object>objects\obj_Coin</object>
       <object>objects\obj_chest</object>
       <object>objects\obj_forestTreasure</object>
+      <object>objects\obj_caveTreasure</object>
+      <object>objects\obj_ruinsTreasure</object>
       <object>objects\obj_heart</object>
     </objects>
     <objects name="Projectiles">
