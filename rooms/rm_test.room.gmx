@@ -521,6 +521,11 @@
     <instance objName="obj_batEnemy" x="1024" y="448" name="inst_CDD8A1D7" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_caveTreasure" x="2880" y="480" name="inst_02051356" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_ruinsTreasure" x="2944" y="480" name="inst_5A333BAC" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_enemyBounds" x="2368" y="384" name="inst_86EEB5E6" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_enemyBounds" x="2368" y="416" name="inst_B5F1022F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_enemyBounds" x="2720" y="384" name="inst_AEC95CA4" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_enemyBounds" x="2720" y="416" name="inst_CBFF7FD2" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_bearEnemy" x="2592" y="448" name="inst_C6A9E0DB" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles>
     <tile bgName="bg_test1" x="128" y="608" w="32" h="32" xo="0" yo="0" id="10000001" name="inst_326A38F1" depth="1000000" locked="0" colour="4294967295" scaleX="1" scaleY="1"/>

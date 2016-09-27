@@ -50,6 +50,9 @@
       <sprite>sprites\spr_snakeDead</sprite>
       <sprite>sprites\spr_batHurt</sprite>
       <sprite>sprites\spr_batDead</sprite>
+      <sprite>sprites\spr_bear</sprite>
+      <sprite>sprites\spr_bearHurt</sprite>
+      <sprite>sprites\spr_bear_move</sprite>
     </sprites>
     <sprites name="Projectiles">
       <sprite>sprites\spr_bullet</sprite>
@@ -80,6 +83,7 @@
       <object>objects\obj_enemyR1</object>
       <object>objects\obj_testEnemy</object>
       <object>objects\obj_snakeEnemy</object>
+      <object>objects\obj_bearEnemy</object>
       <object>objects\obj_batEnemy</object>
     </objects>
     <objects name="Level Items">
@@ -97,6 +101,7 @@
   </objects>
   <rooms name="rooms">
     <room>rooms\rm_test</room>
+    <room>rooms\rm_cave1</room>
   </rooms>
   <help>
     <rtf>help.rtf</rtf>
