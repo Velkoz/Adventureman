@@ -224,7 +224,7 @@ if(damagable){
         <arguments>
           <argument>
             <kind>0</kind>
-            <string>20*obj_Player.image_xscale</string>
+            <string>32*obj_Player.image_xscale</string>
           </argument>
           <argument>
             <kind>0</kind>
@@ -250,7 +250,10 @@ if(damagable){
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>dir = -dir;
+            <string>if(damagable){
+dir = -dir;
+}
+
 </string>
           </argument>
         </arguments>

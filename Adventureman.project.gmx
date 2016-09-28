@@ -63,7 +63,9 @@
     <background>background\bg_Forest1</background>
     <background>background\bg_test1</background>
   </backgrounds>
-  <paths name="paths"/>
+  <paths name="paths">
+    <path>paths\Batpath1</path>
+  </paths>
   <fonts name="fonts">
     <font>fonts\fnt_Score</font>
   </fonts>
