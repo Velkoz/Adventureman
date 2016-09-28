@@ -140,7 +140,7 @@ if(damagable){
     
     if(hp &lt;= 0){
         //Death anim
-        //sprite_index = spr_bearDead;
+        sprite_index = spr_bearDead;
         //Destroy
         instance_destroy();
         
@@ -193,7 +193,7 @@ if(damagable){
     
     if(hp &lt;= 0){
         //Death anim
-        //sprite_index = spr_bearDead;
+        sprite_index = spr_bearDead;
         //Destroy
         instance_destroy();
         

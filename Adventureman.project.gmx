@@ -53,6 +53,7 @@
       <sprite>sprites\spr_bear</sprite>
       <sprite>sprites\spr_bearHurt</sprite>
       <sprite>sprites\spr_bear_move</sprite>
+      <sprite>sprites\spr_bearDead</sprite>
     </sprites>
     <sprites name="Projectiles">
       <sprite>sprites\spr_bullet</sprite>
