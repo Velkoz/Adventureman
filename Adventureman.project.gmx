@@ -11,6 +11,8 @@
     <sound>sound\snd_hit</sound>
     <sound>sound\snd_meleeHit</sound>
     <sound>sound\snd_rangedHit</sound>
+    <sound>sound\snd_caveTheme</sound>
+    <sound>sound\snd_ruinsTheme</sound>
   </sounds>
   <sprites name="sprites">
     <sprites name="System">
@@ -63,6 +65,7 @@
   <backgrounds name="background">
     <background>background\bg_Forest1</background>
     <background>background\bg_test1</background>
+    <background>background\bg_cave</background>
   </backgrounds>
   <paths name="paths"/>
   <fonts name="fonts">
@@ -75,6 +78,7 @@
       <object>objects\obj_health</object>
       <object>objects\obj_score</object>
       <object>objects\obj_enemyBounds</object>
+      <object>objects\obj_musicBox</object>
     </objects>
     <objects name="Player">
       <object>objects\obj_Player</object>
@@ -101,8 +105,8 @@
     </objects>
   </objects>
   <rooms name="rooms">
+    <room>rooms\rm_cave</room>
     <room>rooms\rm_test</room>
-    <room>rooms\rm_cave1</room>
   </rooms>
   <help>
     <rtf>help.rtf</rtf>
