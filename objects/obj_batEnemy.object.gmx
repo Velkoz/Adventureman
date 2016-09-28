@@ -29,12 +29,47 @@
 damagable = true;
 
 //Direction
+
+/*
 dir = -1;
 hsp = 0;
 vsp = 0;
 movespeed = 1;
+*/
 grav = 0.0;
 </string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>119</id>
+        <kind>0</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>1</exetype>
+        <functionname>action_path</functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>8</kind>
+            <path>Batpath1</path>
+          </argument>
+          <argument>
+            <kind>0</kind>
+            <string>2</string>
+          </argument>
+          <argument>
+            <kind>4</kind>
+            <string>2</string>
+          </argument>
+          <argument>
+            <kind>4</kind>
+            <string>1</string>
           </argument>
         </arguments>
       </action>
@@ -79,10 +114,11 @@ grav = 0.0;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_xscale = -dir;
-hsp = dir * movespeed;
+            <string>//image_xscale = -dir;
+//hsp = dir * movespeed;
 
 // Horizontal Collision
+/*
 if(place_meeting(x+hsp,y,obj_Collision)){
     while(!place_meeting(x+sign(hsp),y,obj_Collision)){
         x += sign(hsp);
@@ -90,16 +126,20 @@ if(place_meeting(x+hsp,y,obj_Collision)){
     hsp = 0;
     dir = -dir;
 }
-x += hsp;
 
+x += hsp;
+*/
 if(damagable){
+    sprite_index = spr_bat_move;
+    image_speed = 0.07;
+    /*
     if(hsp != 0){
-        sprite_index = spr_bat_move;
-        image_speed = 0.07;
+        
     }
     else{
         sprite_index = spr_bat;
     }
+    */
 }
 </string>
           </argument>
@@ -215,29 +255,6 @@ if(damagable){
     image_speed = 0.2;
     alarm[0] = 30;
 }
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="4" ename="obj_enemyBounds">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>dir = -dir;
 </string>
           </argument>
         </arguments>
