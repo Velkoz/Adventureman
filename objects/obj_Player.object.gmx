@@ -717,7 +717,7 @@ if(obj_forestTreasure.collected == false){
     score += 50000;
 }
 
-//audio_stop_sound(snd_forestTheme);
+audio_stop_sound(snd_forestTheme);
 </string>
           </argument>
         </arguments>

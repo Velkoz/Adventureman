@@ -13,6 +13,7 @@
     <sound>sound\snd_rangedHit</sound>
     <sound>sound\snd_caveTheme</sound>
     <sound>sound\snd_ruinsTheme</sound>
+    <sound>sound\snd_forestTheme</sound>
   </sounds>
   <sprites name="sprites">
     <sprites name="System">
@@ -68,8 +69,9 @@
   </sprites>
   <backgrounds name="background">
     <background>background\bg_Forest1</background>
-    <background>background\bg_test1</background>
+    <background>background\bg_tiles</background>
     <background>background\bg_cave</background>
+    <background>background\bg_forest</background>
   </backgrounds>
   <paths name="paths"/>
   <fonts name="fonts">
@@ -112,8 +114,9 @@
     </objects>
   </objects>
   <rooms name="rooms">
-    <room>rooms\rm_test</room>
+    <room>rooms\rm_forest</room>
     <room>rooms\rm_cave</room>
+    <room>rooms\rm_test</room>
   </rooms>
   <help>
     <rtf>help.rtf</rtf>

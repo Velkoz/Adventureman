@@ -25,12 +25,10 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/*
-if(room = rm_forest){
-    //
+            <string>if(room = rm_forest){
+    audio_play_sound(snd_forestTheme, 1, true);
 }
-*/
-if(room = rm_cave){
+else if(room = rm_cave){
     audio_play_sound(snd_caveTheme, 1, true);
 }
 /*
