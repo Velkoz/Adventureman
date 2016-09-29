@@ -61,6 +61,10 @@
       <sprite>sprites\spr_bullet</sprite>
       <sprite>sprites\spr_dart</sprite>
     </sprites>
+    <sprites name="Traps">
+      <sprite>sprites\spr_beartrap</sprite>
+      <sprite>sprites\spr_beartrap_trigger</sprite>
+    </sprites>
   </sprites>
   <backgrounds name="background">
     <background>background\bg_Forest1</background>
@@ -103,10 +107,13 @@
       <object>objects\obj_dart</object>
       <object>objects\obj_bullet</object>
     </objects>
+    <objects name="Traps">
+      <object>objects\obj_beartrap</object>
+    </objects>
   </objects>
   <rooms name="rooms">
-    <room>rooms\rm_cave</room>
     <room>rooms\rm_test</room>
+    <room>rooms\rm_cave</room>
   </rooms>
   <help>
     <rtf>help.rtf</rtf>

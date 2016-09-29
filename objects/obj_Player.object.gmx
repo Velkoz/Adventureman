@@ -607,6 +607,8 @@ if(obj_caveTreasure.collected == false){
     obj_caveTreasure.collected = true;
     score += 50000;
 }
+
+audio_stop_sound(snd_caveTheme);
 </string>
           </argument>
         </arguments>
@@ -714,6 +716,8 @@ if(obj_forestTreasure.collected == false){
     obj_forestTreasure.collected = true;
     score += 50000;
 }
+
+//audio_stop_sound(snd_forestTheme);
 </string>
           </argument>
         </arguments>
