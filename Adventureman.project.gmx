@@ -65,6 +65,8 @@
     <sprites name="Traps">
       <sprite>sprites\spr_beartrap</sprite>
       <sprite>sprites\spr_beartrap_trigger</sprite>
+      <sprite>sprites\spr_caveSpike</sprite>
+      <sprite>sprites\spr_ruinsSpike</sprite>
     </sprites>
   </sprites>
   <backgrounds name="background">
@@ -112,6 +114,8 @@
     </objects>
     <objects name="Traps">
       <object>objects\obj_beartrap</object>
+      <object>objects\obj_caveSpike</object>
+      <object>objects\obj_ruinsSpike</object>
     </objects>
   </objects>
   <rooms name="rooms">

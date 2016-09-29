@@ -302,6 +302,112 @@ if(!dead){
         </arguments>
       </action>
     </event>
+    <event eventtype="4" ename="obj_ruinsSpike">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Reduce health
+if(damagable){
+    obj_health.hp -= 1;
+    audio_play_sound(snd_hit, 10, false);
+}
+
+if(obj_health.hp &lt;= 0 &amp;&amp; damagable){
+    lives -=1;
+    
+    // Death animation
+    sprite_index = spr_player_death
+    image_speed = 0.17
+    alarm[3] = 60;
+    dead = true;
+    
+    //Place at start
+    //x = start_x;
+    //y = start_y;
+    
+    if(lives &lt;= 0){
+        //Game over!
+        show_message("Game over!");
+        game_restart();
+    }
+}
+else if(damagable){
+    sprite_index = spr_player_hurt;
+}
+
+damagable = false;
+alarm[0] = 30;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="4" ename="obj_caveSpike">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>///Reduce health
+if(damagable){
+    obj_health.hp -= 1;
+    audio_play_sound(snd_hit, 10, false);
+}
+
+if(obj_health.hp &lt;= 0 &amp;&amp; damagable){
+    lives -=1;
+    
+    // Death animation
+    sprite_index = spr_player_death
+    image_speed = 0.17
+    alarm[3] = 60;
+    dead = true;
+    
+    //Place at start
+    //x = start_x;
+    //y = start_y;
+    
+    if(lives &lt;= 0){
+        //Game over!
+        show_message("Game over!");
+        game_restart();
+    }
+}
+else if(damagable){
+    sprite_index = spr_player_hurt;
+}
+
+damagable = false;
+alarm[0] = 30;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
     <event eventtype="4" ename="obj_dart">
       <action>
         <libid>1</libid>
