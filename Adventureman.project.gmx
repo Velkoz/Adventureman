@@ -72,6 +72,7 @@
     <background>background\bg_tiles</background>
     <background>background\bg_cave</background>
     <background>background\bg_forest</background>
+    <background>background\bg_ruins</background>
   </backgrounds>
   <paths name="paths"/>
   <fonts name="fonts">
@@ -116,6 +117,7 @@
   <rooms name="rooms">
     <room>rooms\rm_forest</room>
     <room>rooms\rm_cave</room>
+    <room>rooms\rm_ruins</room>
     <room>rooms\rm_test</room>
   </rooms>
   <help>

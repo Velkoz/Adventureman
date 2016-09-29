@@ -31,11 +31,9 @@
 else if(room = rm_cave){
     audio_play_sound(snd_caveTheme, 1, true);
 }
-/*
-else if(room = rm_ruins || room = rm_ruins1){
+else if(room = rm_ruins){
     audio_play_sound(snd_ruinsTheme, 1, true);
 }
-*/
 </string>
           </argument>
         </arguments>
