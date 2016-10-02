@@ -137,6 +137,8 @@ if(damagable){
             <string>///Take damage
 if(damagable){
     hp -= .5;
+    with instance_create(x+(10*obj_bearEnemy.image_xscale),y,obj_rangedDmg){
+    }
     
     if(hp &lt;= 0){
         //Death anim
@@ -190,6 +192,8 @@ if(damagable){
             <kind>1</kind>
             <string>if(damagable){
     hp -= 1;
+    with instance_create(x+(10*obj_bearEnemy.image_xscale),y,obj_dmgNum){
+    }
     
     if(hp &lt;= 0){
         //Death anim

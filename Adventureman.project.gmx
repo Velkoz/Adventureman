@@ -23,6 +23,9 @@
       <sprite>sprites\spr_emptyHeart</sprite>
       <sprite>sprites\spr_lives</sprite>
       <sprite>sprites\spr_enemyBounds</sprite>
+      <sprite>sprites\spr_oneR</sprite>
+      <sprite>sprites\spr_oneG</sprite>
+      <sprite>sprites\spr_halfR</sprite>
     </sprites>
     <sprites name="Player">
       <sprite>sprites\spr_Player1_Stand</sprite>
@@ -88,6 +91,9 @@
       <object>objects\obj_score</object>
       <object>objects\obj_enemyBounds</object>
       <object>objects\obj_musicBox</object>
+      <object>objects\obj_dmgNum</object>
+      <object>objects\obj_rangedDmg</object>
+      <object>objects\obj_healNum</object>
     </objects>
     <objects name="Player">
       <object>objects\obj_Player</object>
