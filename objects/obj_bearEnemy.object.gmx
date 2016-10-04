@@ -143,6 +143,7 @@ if(damagable){
     if(hp &lt;= 0){
         //Death anim
         sprite_index = spr_bearDead;
+        instance_create(x, y-3, obj_score100);
         //Destroy
         instance_destroy();
         
@@ -198,6 +199,7 @@ if(damagable){
     if(hp &lt;= 0){
         //Death anim
         sprite_index = spr_bearDead;
+        instance_create(x, y-3, obj_score100);
         //Destroy
         instance_destroy();
         

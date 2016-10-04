@@ -26,6 +26,9 @@
       <sprite>sprites\spr_oneR</sprite>
       <sprite>sprites\spr_oneG</sprite>
       <sprite>sprites\spr_halfR</sprite>
+      <sprite>sprites\spr_score100</sprite>
+      <sprite>sprites\spr_score1k</sprite>
+      <sprite>sprites\spr_score50k</sprite>
     </sprites>
     <sprites name="Player">
       <sprite>sprites\spr_Player1_Stand</sprite>
@@ -94,6 +97,9 @@
       <object>objects\obj_dmgNum</object>
       <object>objects\obj_rangedDmg</object>
       <object>objects\obj_healNum</object>
+      <object>objects\obj_score100</object>
+      <object>objects\obj_score1k</object>
+      <object>objects\obj_score50k</object>
     </objects>
     <objects name="Player">
       <object>objects\obj_Player</object>

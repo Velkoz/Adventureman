@@ -611,6 +611,7 @@ else{
 if(obj_ruinsTreasure.collected == false){
     obj_ruinsTreasure.collected = true;
     score += 50000;
+    instance_create(x, y-3, obj_score50k);
 }
 
 audio_stop_sound(snd_ruinsTheme);
@@ -720,6 +721,7 @@ audio_stop_sound(snd_ruinsTheme);
 if(obj_caveTreasure.collected == false){
     obj_caveTreasure.collected = true;
     score += 50000;
+    instance_create(x, y-3, obj_score50k);
 }
 
 audio_stop_sound(snd_caveTheme);
@@ -829,6 +831,7 @@ audio_stop_sound(snd_caveTheme);
 if(obj_forestTreasure.collected == false){
     obj_forestTreasure.collected = true;
     score += 50000;
+    instance_create(x, y-3, obj_score50k);
 }
 
 audio_stop_sound(snd_forestTheme);
@@ -936,6 +939,7 @@ audio_stop_sound(snd_forestTheme);
             <kind>1</kind>
             <string>/// Update Score
 score += 1000
+instance_create(x, y-3, obj_score1k);
 
 /*
 //Open chest
@@ -1085,6 +1089,7 @@ if(image_speed &gt; 0){
           <argument>
             <kind>1</kind>
             <string>/// Update Score
+instance_create(x, y-3, obj_score100);
 score += 100
 </string>
           </argument>
