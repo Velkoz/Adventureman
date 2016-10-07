@@ -47,7 +47,7 @@ draw_set_font(fnt_Score);
         <arguments>
           <argument>
             <kind>0</kind>
-            <string>600</string>
+            <string>575</string>
           </argument>
           <argument>
             <kind>0</kind>
